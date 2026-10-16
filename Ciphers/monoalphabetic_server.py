@@ -63,3 +63,11 @@ else:
 # Close connection
 conn.close()
 server.close()
+
+
+# Output:
+# Waiting for client...
+# Connected to: ('127.0.0.1', 5001)
+# Received ciphertext: Itssg, Vgksr!
+# Enter secret key: QWERTYUIOPASDFGHJKLZXCVBNM
+# Decrypted plaintext: Hello, World!
