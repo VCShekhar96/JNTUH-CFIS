@@ -54,3 +54,8 @@ client.send(ciphertext.encode())
 
 # Close connection
 client.close()
+
+# output:
+# Enter plaintext: Hello, World!
+# Enter 26-letter encryption key: QWERTYUIOPASDFGHJKLZXCVBNM
+# Encrypted text: Itssg, Vgksr!
