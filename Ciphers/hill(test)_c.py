@@ -44,3 +44,8 @@ print("Encrypted:", ciphertext)
 
 client.send(ciphertext.encode())
 client.close()
+
+# Output:
+# Enter plaintext: caesar
+# Enter secret key: govindh 
+# Encrypted: SCCXNX
