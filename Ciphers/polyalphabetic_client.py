@@ -74,3 +74,9 @@ client.connect((HOST, PORT))
 client.send(ciphertext.encode())
 
 client.close()
+
+
+# Output:
+#Enter plaintext: chandu
+# Enter key: caesar
+# Ciphertext: ehefdl
