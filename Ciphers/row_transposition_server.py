@@ -81,3 +81,11 @@ print("Decrypted Plaintext:", plaintext)
 # Close connection
 conn.close()
 server.close()
+
+# Output:
+
+# Waiting for client...
+# Connected to: ('127.0.0.1', 60058)
+# Received Ciphertext: jyaa
+# Enter secret key: 3142
+# Decrypted Plaintext: ajay
