@@ -64,3 +64,8 @@ client.connect((HOST, PORT))
 client.send(ciphertext.encode())
 
 client.close() 
+
+# Output:
+# Enter plaintext: ajay
+# Enter number of rails: 3
+# Ciphertext: ajya
