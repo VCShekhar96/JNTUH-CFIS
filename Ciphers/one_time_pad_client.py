@@ -80,3 +80,8 @@ client.connect((HOST, PORT))
 client.send(ciphertext.encode())
 
 client.close()
+
+# Output:
+# Enter plaintext: Hello, World!
+# Enter key: mysecretkey
+# Ciphertext: Itssg, Vgksr!
