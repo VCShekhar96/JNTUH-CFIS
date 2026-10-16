@@ -104,3 +104,9 @@ print("Encrypted text:", ciphertext)
 client.send(ciphertext.encode())
 
 client.close()
+
+
+# Output:
+# Enter plaintext: hello world
+# Enter encryption key: playfair
+# Encrypted text: KGYVRVVQGRCZ
