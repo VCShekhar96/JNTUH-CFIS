@@ -85,3 +85,7 @@ client.close()
 # Enter plaintext: Hello, World!
 # Enter key: mysecretkey
 # Ciphertext: Itssg, Vgksr!
+
+# Enter plaintext: hello
+# Enter key: caesar 
+# Ciphertext: jepdo
