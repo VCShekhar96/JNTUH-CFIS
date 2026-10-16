@@ -103,3 +103,10 @@ print("Decrypted Plaintext:", plaintext)
 # Close connection
 conn.close()
 server.close()
+
+# Output:
+# Waiting for client...
+# Connected to: ('127.0.0.1', 61462)
+# Received Ciphertext: ajya
+# Enter number of rails: 3
+# Decrypted Plaintext: ajay
