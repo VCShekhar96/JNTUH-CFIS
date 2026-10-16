@@ -76,3 +76,10 @@ print("Decrypted message : ", plaintext)
 
 client.close()
 server.close()
+
+# Output:
+# server waiting for connection...
+# client connected:  ('127.0.0.1', 62149)
+# Received cipher:  SCCXNX
+# Enter secret key: govindh
+# Decrypted message :  CAESAR
