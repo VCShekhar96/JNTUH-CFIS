@@ -85,3 +85,8 @@ print("Decrypted plaintext:", plaintext)
 
 conn.close()
 server.close()
+
+# Output:
+# Waiting for client...
+# Connected to: ('127.0.0.1', 62675)
+# Received ciphertext: KGYVRVVQGRCZ
