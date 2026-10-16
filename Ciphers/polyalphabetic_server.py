@@ -86,3 +86,10 @@ print("Decrypted Plaintext:", plaintext)
 # Close connection
 conn.close()
 server.close()
+
+# Output:
+# Waiting for client...
+# Connected to: ('127.0.0.1', 54984)
+# Received Ciphertext: ehefdl
+# Enter secret key: caesar
+# Decrypted Plaintext: chandu
