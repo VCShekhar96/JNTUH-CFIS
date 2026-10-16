@@ -1,94 +1,64 @@
 import socket
 
-HOST = "127.0.0.1"
-PORT = 5001
+alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
 
-# -------------------------------------------------------
-# One-Time Pad Decryption
-# -------------------------------------------------------
-def decrypt(ciphertext, key):
-
+def monoalphabetic_decrypt(ciphertext, key):
     result = ""
-    key_index = 0
 
     for ch in ciphertext:
 
-        # Decrypt only alphabetic characters
         if ch.isalpha():
 
-            # Convert ciphertext letter to number
-            # A = 0, B = 1, ..., Z = 25
-            c = ord(ch.upper()) - ord('A')
+            index = key.index(ch.upper())
 
-            # Get corresponding key letter
-            k = ord(key[key_index].upper()) - ord('A')
+            decrypted = alphabet[index]
 
-            # OTP decryption formula
-            p = (c - k) % 26
-
-            # Convert number back to letter
-            decrypted = chr(p + ord('A'))
-
-            # Preserve lowercase letters
             if ch.islower():
                 decrypted = decrypted.lower()
 
             result += decrypted
 
-            key_index += 1
-
         else:
-            # Keep spaces and special characters unchanged
             result += ch
 
     return result
 
 
-# -------------------------------------------------------
-# Server
-# -------------------------------------------------------
-
-# Create TCP socket
-server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-
-# Allow port to be reused
-server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+# Create socket
+server = socket.socket()
 
 # Bind server
-server.bind((HOST, PORT))
+server.bind(("127.0.0.1", 5001))
 
-# Listen for client
+# Listen
 server.listen(1)
 
 print("Waiting for client...")
 
 # Accept connection
-conn, address = server.accept()
+conn, addr = server.accept()
 
-print("Connected to:", address)
+print("Connected to:", addr)
 
 # Receive ONLY ciphertext
-ciphertext = conn.recv(4096).decode()
+ciphertext = conn.recv(1024).decode()
 
-print("Received Ciphertext:", ciphertext)
+print("Received ciphertext:", ciphertext)
 
-# Server enters the secret key separately
-key = input("Enter secret key: ")
+# Server enters secret key
+key = input("Enter secret key: ").upper()
 
-# Remove non-alphabetic characters from key
-key = ''.join(ch for ch in key if ch.isalpha())
-
-# Check that the key is long enough
-required_length = sum(ch.isalpha() for ch in ciphertext)
-
-if len(key) < required_length:
-    print("Key is too short.")
+# Validate key
+if len(key) != 26 or len(set(key)) != 26 or not key.isalpha():
+    print("Invalid key!")
+    print("Key must contain 26 unique letters.")
 else:
-    # Decrypt ciphertext
-    plaintext = decrypt(ciphertext, key)
 
-    print("Decrypted Plaintext:", plaintext)
+    # Decrypt
+    plaintext = monoalphabetic_decrypt(ciphertext, key)
+
+    print("Decrypted plaintext:", plaintext)
 
 # Close connection
 conn.close()
@@ -100,3 +70,7 @@ server.close()
 # Received Ciphertext: Itssg, Vgksr!
 # Enter secret key: mysecretkey
 # Decrypted Plaintext: Hello, World!
+
+# Waiting for client...
+# Connected to: ('127.0.0.1', 64745)
+# Received ciphertext: jepdo
